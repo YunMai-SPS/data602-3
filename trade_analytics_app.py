@@ -7,6 +7,7 @@ Created on Tue Nov  7 10:03:57 2017
 
 # get the date and time for blotter and PL table
 import time
+import lxml
 import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup # web scraping
@@ -42,7 +43,7 @@ import urllib.request
 import seaborn as sns
 from scipy import stats
 
-import ta-lib  # stock indicator calculation
+import talib  # stock indicator calculation
 
 import math
 from sklearn import preprocessing, cross_validation, svm
@@ -312,6 +313,8 @@ def trade():
     errors = []
     global blotter
     global pl
+    
+    history_weather=pd.DataFrame()
     
     select = 'tqqq'
     side = 'buy'
@@ -971,22 +974,22 @@ def DataForModel(history1year):
     ForceIndex = FI(history1year,14)
     
     # William %R
-    WILLR = ta-lib.WILLR(highp, lowp, closep, timeperiod=14)
+    WILLR = talib.WILLR(highp, lowp, closep, timeperiod=14)
     
     # Relative Strength Index(RSI)
-    RSI = ta-lib.RSI(closep, timeperiod=14)
+    RSI = talib.RSI(closep, timeperiod=14)
     
     # Rate Of Change(ROC), this is daily return too
-    ROC = ta-lib.ROC(closep, timeperiod=14)
+    ROC = talib.ROC(closep, timeperiod=14)
     
     # Momentum (MOM)
-    MOM = ta-lib.MOM(closep, timeperiod=14)
+    MOM = talib.MOM(closep, timeperiod=14)
     
     # Average True Range(ATR)
-    ATR = ta-lib.ATR(highp,lowp,closep)  
+    ATR = talib.ATR(highp,lowp,closep)  
     
     #Parabolic SAR 
-    SAR = ta-lib.SAR(highp, lowp, acceleration=0.02, maximum=0.2)
+    SAR = talib.SAR(highp, lowp, acceleration=0.02, maximum=0.2)
     
     #Price range for the day (bars)
     intraday_PriceRange = closep- openp
