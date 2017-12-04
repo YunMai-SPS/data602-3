@@ -21,6 +21,8 @@ from sqlalchemy import MetaData
 from sqlalchemy import Table
 
 import pandas_datareader as pdr
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.finance import candlestick_ochl,candlestick_ohlc
@@ -36,8 +38,6 @@ from matplotlib.transforms import Bbox, TransformedBbox
 import matplotlib.gridspec as gridspec
 
 import matplotlib.ticker as mticker
-import matplotlib
-matplotlib.use('Agg')
 from pylab import rcParams
 
 import urllib.request
