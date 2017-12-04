@@ -37,6 +37,7 @@ import matplotlib.gridspec as gridspec
 
 import matplotlib.ticker as mticker
 import matplotlib
+matplotlib.use('Agg')
 from pylab import rcParams
 
 import urllib.request
